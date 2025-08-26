@@ -1,5 +1,6 @@
 package com.viksem.foodfriend2.ui.theme
 
+import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -8,28 +9,28 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Green500,
+    secondary = Color.White,
+    tertiary = Color.White,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
+
+    background = Color.White,
+    surface = Color.White,
     onPrimary = Color.White,
-    onSecondary = Color.White,
+    onSecondary = Gray700,
     onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    onBackground = Gray900,
+    onSurface = Gray900,
 )
 
 @Composable
@@ -54,4 +55,17 @@ fun FoodFriend2Theme(
         typography = Typography,
         content = content
     )
+}
+
+@Composable
+fun SetStatusBarColor(color: Color, darkIcons: Boolean = true) {
+    val activity = LocalContext.current as Activity
+
+    LaunchedEffect(color, darkIcons) {
+        val window = activity.window
+        val controller = WindowCompat.getInsetsController(window, window.decorView)
+
+        window.statusBarColor = color.toArgb()
+        controller.isAppearanceLightStatusBars = darkIcons
+    }
 }

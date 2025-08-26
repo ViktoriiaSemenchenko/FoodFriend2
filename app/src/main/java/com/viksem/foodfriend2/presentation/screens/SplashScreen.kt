@@ -19,7 +19,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -33,8 +32,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.viksem.foodfriend2.R
+import com.viksem.foodfriend2.ui.theme.Green25
+import com.viksem.foodfriend2.ui.theme.Green900
+import com.viksem.foodfriend2.ui.theme.SetStatusBarColor
 import kotlinx.coroutines.delay
 import kotlin.math.roundToInt
 
@@ -42,15 +43,7 @@ import kotlin.math.roundToInt
 fun SplashScreen(
     navController: NavController
 ) {
-    val systemUiController = rememberSystemUiController()
-    val useDarkIcons = false
-
-    LaunchedEffect(Unit) {
-        systemUiController.setStatusBarColor(
-            color = Color(0xFF092727),
-            darkIcons = useDarkIcons
-        )
-    }
+    SetStatusBarColor(color = Green25, darkIcons = true)
 
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
@@ -93,7 +86,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF092727)),
+            .background(Green25),
         contentAlignment = Alignment.TopCenter
     ) {
         Text(
@@ -101,10 +94,10 @@ fun SplashScreen(
             textAlign = TextAlign.Center,
             lineHeight = 56.sp,
             style = MaterialTheme.typography.headlineLarge,
-            fontFamily = FontFamily(Font(R.font.viaoda_libre)),
+            fontFamily = FontFamily(Font(R.font.cormorant_garamond)),
             fontWeight = FontWeight.Bold,
             fontSize = 56.sp,
-            color = Color.White,
+            color = Green900,
             modifier = Modifier
                 .graphicsLayer { alpha = titleAlpha.value }
                 .padding(top = screenHeight * 0.2f)
