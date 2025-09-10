@@ -18,11 +18,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.viksem.foodfriend2.presentation.components.BottomBar
-import com.viksem.foodfriend2.presentation.screens.AccountScreen
-import com.viksem.foodfriend2.presentation.screens.CreateRecipeScreen
-import com.viksem.foodfriend2.presentation.screens.HomeScreen
-import com.viksem.foodfriend2.presentation.screens.RecipeDetailsScreen
-import com.viksem.foodfriend2.presentation.screens.ShoppingCartScreen
+import com.viksem.foodfriend2.presentation.screens.account.AccountScreen
+import com.viksem.foodfriend2.presentation.screens.create_recipe.CreateRecipeScreen
+import com.viksem.foodfriend2.presentation.screens.home.HomeScreen
+import com.viksem.foodfriend2.presentation.screens.recipe_details.RecipeDetailsScreen
+import com.viksem.foodfriend2.presentation.screens.cart.ShoppingCartScreen
 import com.viksem.foodfriend2.presentation.screens.SplashScreen
 import com.viksem.foodfriend2.ui.theme.Gray100
 
@@ -52,7 +52,6 @@ fun AppNavigation() {
             startDestination = Screens.Splash.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            // Tabs
             composable(Screens.Splash.route) {
                 SplashScreen(
                     navController
@@ -71,7 +70,6 @@ fun AppNavigation() {
                 )
             }
 
-            // Secondary
             composable(
                 route = Screens.RecipeDetails.route,
                 arguments = listOf(navArgument("recipeId") { type = NavType.StringType })

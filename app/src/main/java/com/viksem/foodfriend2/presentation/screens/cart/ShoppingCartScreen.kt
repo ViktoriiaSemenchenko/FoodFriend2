@@ -1,4 +1,4 @@
-package com.viksem.foodfriend2.presentation.screens
+package com.viksem.foodfriend2.presentation.screens.cart
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

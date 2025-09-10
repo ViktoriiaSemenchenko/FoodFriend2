@@ -1,4 +1,4 @@
-package com.viksem.foodfriend2.presentation.screens
+package com.viksem.foodfriend2.presentation.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,15 +46,19 @@ fun HomeScreen(navController: NavController? = null) {
     SetStatusBarColor(color = Color.White, darkIcons = true)
 
     Scaffold(Modifier.padding(horizontal = 16.dp)) { innerPadding ->
-        Column(Modifier.padding(innerPadding.calculateBottomPadding())) {
+        Column(
+            Modifier.padding(
+                innerPadding
+            ).fillMaxHeight()
+        ) {
             Text(
                 "Welcome to Your\nCulinary Hub",
-                lineHeight = 36.sp,
                 style = MaterialTheme.typography.headlineLarge,
                 fontFamily = FontFamily(Font(R.font.cormorant_garamond)),
-                fontWeight = FontWeight(550),
-                fontSize = 42.sp,
-                color = MaterialTheme.colorScheme.onBackground
+                lineHeight = 36.sp,
+                fontWeight = FontWeight(600),
+                fontSize = 32.sp,
+                color = MaterialTheme.colorScheme.onBackground,
             )
             HomeSearch({ navController?.navigate("home") })
         }
@@ -95,7 +100,7 @@ fun HomeSearch(onClick: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = Icons.Default.Search, // або своя іконка
+                imageVector = Icons.Default.Search,
                 contentDescription = "Search",
                 tint = Gray600
             )

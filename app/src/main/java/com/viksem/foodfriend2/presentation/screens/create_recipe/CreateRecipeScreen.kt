@@ -1,12 +1,12 @@
-package com.viksem.foodfriend2.presentation.screens
+package com.viksem.foodfriend2.presentation.screens.create_recipe
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.viksem.foodfriend2.presentation.components.ScreenContent
 
 @Composable
-fun AccountScreen(navController: NavController) {
+fun CreateRecipeScreen(navController: NavController) {
     ScreenContent(
-        title = "Account Screen"
+        title = "Create Recipe Screen"
     )
 }
